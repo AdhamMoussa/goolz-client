@@ -1,0 +1,47 @@
+@import '../../../styles/styles.scss';
+
+.Day {
+  background-color: $white;
+  border: 1px solid $gray;
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: calc(100% / 7);
+
+  &.inActive {
+    background-color: $grayLight;
+
+    * {
+      opacity: 0.75;
+    }
+  }
+
+  &.isToday {
+    background-color: $tertiary;
+
+    .dayNumber {
+      font-weight: 700;
+    }
+  }
+
+  .dayInner {
+    position: relative;
+    padding-bottom: 100%;
+
+    .dayContent {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      .dayNumber {
+        font-size: 1rem;
+        display: block;
+        text-align: center;
+        padding: 5%;
+      }
+    }
+  }
+}

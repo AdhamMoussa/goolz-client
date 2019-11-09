@@ -1,0 +1,21 @@
+@import '../../../styles/styles.scss';
+
+.Month {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+
+  .weekHead {
+    display: flex;
+  }
+
+  .weekHeadTitle {
+    color: $main;
+    width: calc(100% / 7);
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+    border: 1px solid $gray;
+    padding: 5px 0;
+  }
+}
