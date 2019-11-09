@@ -1,0 +1,37 @@
+@import '../../styles/styles.scss';
+
+.Navigation {
+  .navList {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navListItem {
+    a {
+      align-items: center;
+      border-left: 4px solid transparent;
+      color: $white;
+      display: flex;
+      font-size: 18px;
+      padding: 15px;
+      padding-left: 25px;
+    }
+
+    &Active {
+      background-color: lighten($blackGray, 12%);
+      border-left-color: $main !important;
+    }
+  }
+
+  .navListItemIcon {
+    display: flex;
+    font-size: 24px;
+    justify-content: center;
+    width: 20%;
+  }
+
+  .navListItemLabel {
+    display: block;
+    text-transform: capitalize;
+  }
+}

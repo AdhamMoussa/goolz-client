@@ -1,0 +1,19 @@
+@import '../../styles/styles.scss';
+
+.Header {
+  align-items: center;
+  background: linear-gradient(
+    to bottom left,
+    $blackGray,
+    lighten($blackGray, 10%)
+  );
+  box-shadow: 0 0 5px 0 $gray;
+  color: $white;
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 80%;
+}

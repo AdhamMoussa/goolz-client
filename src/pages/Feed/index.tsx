@@ -1,11 +1,11 @@
 import React from 'react';
-import Layout from '../../components/Layout';
+import Page from '../../components/Page';
 
 const FeedPage: React.FC = () => {
   return (
-    <Layout>
+    <Page>
       <h1>Feed</h1>
-    </Layout>
+    </Page>
   );
 };
 

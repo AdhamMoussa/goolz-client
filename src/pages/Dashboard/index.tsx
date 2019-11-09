@@ -1,13 +1,13 @@
 import React from 'react';
-import Layout from '../../components/Layout';
 
 import Calendar from '../../components/Calendar';
+import Page from '../../components/Page';
 
 const Dashboard: React.FC = () => {
   return (
-    <Layout>
+    <Page>
       <Calendar />
-    </Layout>
+    </Page>
   );
 };
 
