@@ -1,0 +1,38 @@
+@import '../../styles/styles.scss';
+
+.title {
+  display: block;
+  font-size: 16px;
+  text-transform: capitalize;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.select {
+  background-color: $white !important;
+  border: 1px solid $grayLight !important;
+  border-bottom: 3px solid $main !important;
+  font-size: 16px;
+  color: $black !important;
+
+  &.hasError {
+    border-bottom-color: $red !important;
+  }
+}
+
+.placeholder {
+  text-transform: capitalize;
+  color: $gray;
+}
+
+.menu {
+  color: $black !important;
+  text-transform: capitalize;
+}
+
+.error {
+  display: block;
+  height: 16px;
+  font-size: 14px;
+  color: $red;
+}

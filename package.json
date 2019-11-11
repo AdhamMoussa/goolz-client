@@ -8,11 +8,14 @@
     "framer-motion": "^1.6.15",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-dropdown": "^1.6.4",
+    "react-hook-form": "^3.27.0",
     "react-icons": "^3.8.0",
     "react-lines-ellipsis": "^0.14.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
-    "react-truncate-markup": "^4.1.0"
+    "react-truncate-markup": "^4.1.0",
+    "yup": "^0.27.0"
   },
   "devDependencies": {
     "@types/jest": "24.0.21",
@@ -20,6 +23,7 @@
     "@types/react": "16.9.11",
     "@types/react-dom": "16.9.3",
     "@types/react-router-dom": "^5.1.0",
+    "@types/yup": "^0.26.24",
     "@typescript-eslint/eslint-plugin": "^2.4.0",
     "@typescript-eslint/parser": "^2.4.0",
     "eslint": "^6.5.1",
@@ -27,8 +31,8 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
     "node-sass": "^4.13.0",
-    "prettier": "^1.18.2",
-    "typescript": "3.6.4"
+    "prettier": "1.19.1",
+    "typescript": "3.7.2"
   },
   "scripts": {
     "start:dev": "react-scripts start",
