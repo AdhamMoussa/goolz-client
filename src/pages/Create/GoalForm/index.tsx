@@ -1,13 +1,14 @@
 import React from 'react';
+import { InferType } from 'yup';
 
 import FormInput from '../../../components/FormInput';
 import FormSelect from '../../../components/FormSelect';
 import FormDatePicker from '../../../components/FormDatePicker';
 import Button from '../../../components/Button';
 
-import { useGoalForm } from './useGoalForm';
+import { useCustomForm } from '../../../hooks/useCustomForm';
 
-import { goalCategories } from './goalForm.schema';
+import { goalCategories, goalFormSchema } from './goalForm.schema';
 
 import { icons } from '../../../utils/ui/icons';
 
@@ -19,52 +20,72 @@ const goalCategoriesOptions = goalCategories.map(value => ({
   label: value
 }));
 
-const GoalForm: React.FC = () => {
-  const {
-    formMethods,
-    categoryChangeHandler,
-    startDateChangeHandler,
-    submitHandler
-  } = useGoalForm();
+export type IFormState = InferType<typeof goalFormSchema>;
 
-  const { register, errors, formState } = formMethods;
+interface IProps {
+  initialFormState: IFormState;
+  updateFormState: (state: IFormState) => void;
+}
+
+const GoalForm: React.FC<IProps> = props => {
+  const { initialFormState, updateFormState } = props;
+
+  const { formMethods, changeHandler } = useCustomForm<IFormState>(
+    goalFormSchema,
+    initialFormState,
+    updateFormState
+  );
+
+  const { errors, formState, handleSubmit } = formMethods;
+
+  const submitHandler = handleSubmit(data => {
+    console.log(data);
+  });
 
   return (
     <form onSubmit={submitHandler}>
       <div className={styles.formInput}>
         <FormInput
           name="title"
-          label="Goal title"
+          value={initialFormState.title}
+          label="title"
           disabled={formState.isSubmitting}
-          ref={register}
           error={errors.title ? errors.title.message : undefined}
+          onChange={(value): void => {
+            changeHandler('title', value);
+          }}
         />
       </div>
 
       <div className={styles.formInput}>
         <FormSelect
           title="category"
+          value={initialFormState.category}
           options={goalCategoriesOptions}
-          onChange={categoryChangeHandler}
           error={errors.category ? errors.category.message : undefined}
           disabled={formState.isSubmitting}
+          onChange={(value): void => {
+            changeHandler('category', value);
+          }}
         />
       </div>
 
       <div className={styles.formInput}>
         <FormDatePicker
           title="start date"
+          selectedDate={initialFormState.startDate}
           disabled={formState.isSubmitting}
           error={errors.startDate ? errors.startDate.message : undefined}
-          onChange={startDateChangeHandler}
           minDate={new Date()}
+          onChange={(value): void => {
+            changeHandler('startDate', value);
+          }}
         />
       </div>
 
       <Button
         title="Next"
         styleType="main"
-        // disabled
         type="submit"
         icon={icons.next}
         iconPosition="right"

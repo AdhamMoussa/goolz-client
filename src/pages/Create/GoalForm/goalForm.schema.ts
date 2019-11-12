@@ -12,15 +12,15 @@ export const goalCategories = [
 ] as const;
 
 export const goalFormSchema = yup.object().shape({
-  title: yup.string().required(),
+  title: yup.string().required('Title is required'),
 
   category: yup
     .string()
-    .oneOf(Array(...goalCategories))
-    .required(),
+    .oneOf(Array(...goalCategories), 'Category is required')
+    .required('Category is required'),
 
   startDate: yup
     .date()
     .default(new Date())
-    .required()
+    .required('Start Date is required')
 });

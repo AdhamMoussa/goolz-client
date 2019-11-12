@@ -3,21 +3,24 @@ import React from 'react';
 import styles from './styles.module.scss';
 
 interface IProps {
+  value: string;
   name: string;
   label: string;
   error?: string;
   disabled?: boolean;
+  onChange: (value: string) => void;
 }
 
-const FormInput: React.RefForwardingComponent<HTMLInputElement, IProps> = (
-  props,
-  ref
-) => {
-  const { name, label, error, disabled } = props;
+const FormInput: React.FC<IProps> = props => {
+  const { value, name, label, error, disabled, onChange } = props;
+
+  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    onChange(event.target.value);
+  };
 
   return (
     <div className={styles.FormInput}>
-      <label htmlFor={name} hidden>
+      <label className={styles.title} htmlFor={name}>
         {label}
       </label>
 
@@ -26,11 +29,12 @@ const FormInput: React.RefForwardingComponent<HTMLInputElement, IProps> = (
           ${styles.input}
           ${error && !disabled ? styles.hasError : ''}
         `}
+        value={value}
         type="text"
         name={name}
         placeholder={label}
         disabled={disabled}
-        ref={ref}
+        onChange={changeHandler}
       />
 
       <span className={styles.error}>{error && !disabled ? error : ''}</span>
@@ -38,4 +42,4 @@ const FormInput: React.RefForwardingComponent<HTMLInputElement, IProps> = (
   );
 };
 
-export default React.forwardRef(FormInput);
+export default FormInput;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Dropdown, { Option } from 'react-dropdown';
 
 import styles from './styles.module.scss';
@@ -9,18 +9,16 @@ interface IProps {
   title: string;
   error?: string;
   options: OptionType[];
+  value: string;
   disabled: boolean;
-  onChange: (option: Option) => void;
+  onChange: (value: string) => void;
 }
 
 const FormSelect: React.FC<IProps> = props => {
-  const { title, options, error, disabled, onChange } = props;
-
-  const [value, setValue] = useState<Option | undefined>();
+  const { title, value, options, error, disabled, onChange } = props;
 
   const changeHandler = (option: Option): void => {
-    setValue(option);
-    onChange(option);
+    onChange(option.value);
   };
 
   return (
