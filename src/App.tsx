@@ -3,6 +3,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Feed from './pages/Feed';
 import Dashboard from './pages/Dashboard';
+import Create from './pages/Create';
+
 import Layout from './components/Layout';
 
 const App: React.FC = () => {
@@ -16,6 +18,10 @@ const App: React.FC = () => {
 
           <Route path="/dashboard">
             <Dashboard />
+          </Route>
+
+          <Route path="/create">
+            <Create />
           </Route>
         </Switch>
       </Layout>

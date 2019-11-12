@@ -9,11 +9,12 @@ interface IProps {
   title: string;
   error?: string;
   options: OptionType[];
+  disabled: boolean;
   onChange: (option: Option) => void;
 }
 
 const FormSelect: React.FC<IProps> = props => {
-  const { title, options, error, onChange } = props;
+  const { title, options, error, disabled, onChange } = props;
 
   const [value, setValue] = useState<Option | undefined>();
 
@@ -34,6 +35,7 @@ const FormSelect: React.FC<IProps> = props => {
         menuClassName={styles.menu}
         placeholderClassName={styles.placeholder}
         onChange={changeHandler}
+        disabled={disabled}
       />
 
       <span className={styles.error}>{error}</span>

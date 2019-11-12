@@ -7,11 +7,13 @@ interface IProps {
   label: string;
   error?: string;
   disabled?: boolean;
-  register: () => void;
 }
 
-const FormInput: React.FC<IProps> = props => {
-  const { name, label, error, disabled, register } = props;
+const FormInput: React.RefForwardingComponent<HTMLInputElement, IProps> = (
+  props,
+  ref
+) => {
+  const { name, label, error, disabled } = props;
 
   return (
     <div className={styles.FormInput}>
@@ -26,9 +28,9 @@ const FormInput: React.FC<IProps> = props => {
         `}
         type="text"
         name={name}
-        placeholder={name}
+        placeholder={label}
         disabled={disabled}
-        ref={register}
+        ref={ref}
       />
 
       <span className={styles.error}>{error && !disabled ? error : ''}</span>
@@ -36,4 +38,4 @@ const FormInput: React.FC<IProps> = props => {
   );
 };
 
-export default FormInput;
+export default React.forwardRef(FormInput);

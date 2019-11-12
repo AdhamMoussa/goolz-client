@@ -3,13 +3,14 @@
 .FormInput {
   display: flex;
   flex-direction: column;
-  height: 50px;
+  height: 56px;
 
   .input {
     display: block;
     background-color: $white;
-    height: 34px;
-    border-bottom: 3px solid transparent;
+    border: 1px solid $grayLight;
+    height: 40px;
+    border-bottom: 3px solid $main;
     padding: 0 10px;
     font-size: 16px;
     transition: 0.25s;
@@ -18,10 +19,11 @@
     &::placeholder {
       color: $gray;
       font-size: 16px;
+      text-transform: capitalize;
     }
 
     &:focus {
-      border-bottom-color: $main;
+      border-bottom-color: $tertiary;
     }
 
     &.hasError {
