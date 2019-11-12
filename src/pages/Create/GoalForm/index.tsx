@@ -3,10 +3,13 @@ import React from 'react';
 import FormInput from '../../../components/FormInput';
 import FormSelect from '../../../components/FormSelect';
 import FormDatePicker from '../../../components/FormDatePicker';
+import Button from '../../../components/Button';
 
 import { useGoalForm } from './useGoalForm';
 
 import { goalCategories } from './goalForm.schema';
+
+import { icons } from '../../../utils/ui/icons';
 
 import styles from './styles.module.scss';
 import 'react-dropdown/style.css';
@@ -58,7 +61,14 @@ const GoalForm: React.FC = () => {
         />
       </div>
 
-      <input type="submit" />
+      <Button
+        title="Next"
+        styleType="main"
+        // disabled
+        type="submit"
+        icon={icons.next}
+        iconPosition="right"
+      />
     </form>
   );
 };

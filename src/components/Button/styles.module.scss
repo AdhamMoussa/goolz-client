@@ -1,0 +1,50 @@
+@import '../../styles/styles.scss';
+
+.Button {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  font-size: 16px;
+  padding: 0 25px;
+  height: 40px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &.main {
+    background-color: $main;
+    color: $white;
+  }
+
+  &.secondary {
+    background-color: $grayLight;
+    border: 1px solid $gray;
+    color: $gray;
+  }
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .icon {
+    line-height: 0;
+    font-size: 24px;
+
+    &.right {
+      order: 1;
+      margin-left: 10px;
+    }
+
+    &.left {
+      order: -1;
+      margin-right: 10px;
+    }
+  }
+}
