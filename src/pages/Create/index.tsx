@@ -14,9 +14,10 @@ import { IGoal } from '../../store/goals/types';
 import { routes } from '../../utils/routes';
 
 import styles from './styles.module.scss';
+import ProtectedRoute from '../../components/ProtectedRoute';
 
 const initialFormState: IGoal = {
-  title: 'learn graphql',
+  title: 'learn Graphql',
   category: 'back end',
   startDate: new Date(),
   learningResources: [
@@ -39,6 +40,12 @@ const initialFormState: IGoal = {
 
 const Create: React.FC = () => {
   const [state, setState] = useState<IGoal>(initialFormState);
+
+  const isGoalInfoValid: boolean =
+    Boolean(state.title) && Boolean(state.category) && Boolean(state.startDate);
+
+  const isGoalValid: boolean =
+    isGoalInfoValid && state.learningResources.length > 0;
 
   return (
     <Page>
@@ -63,31 +70,48 @@ const Create: React.FC = () => {
           </MountAnimation>
         </Route>
 
-        <Route path={routes.CREATE__RESOURCES_LIST}>
-          <MountAnimation>
-            <Resources
-              resourcesList={initialFormState.learningResources}
-              updateFormState={(updates): void => {
-                setState(currentState => ({
-                  ...currentState,
-                  learningResources: updates
-                }));
-              }}
-            />
-          </MountAnimation>
-        </Route>
+        <ProtectedRoute
+          path={routes.CREATE__RESOURCES_LIST}
+          isValid={isGoalInfoValid}
+          redirectPath={routes.CREATE}
+          component={(): JSX.Element => (
+            <MountAnimation>
+              <Resources
+                resourcesList={initialFormState.learningResources}
+                updateFormState={(updates): void => {
+                  setState(currentState => ({
+                    ...currentState,
+                    learningResources: updates
+                  }));
+                }}
+              />
+            </MountAnimation>
+          )}
+        />
 
-        <Route path={routes.CREATE__RESOURCE_FORM}>
-          <MountAnimation>
-            <ResourceForm />
-          </MountAnimation>
-        </Route>
+        <ProtectedRoute
+          path={routes.CREATE__RESOURCE_FORM}
+          isValid={isGoalInfoValid}
+          redirectPath={routes.CREATE}
+          component={(): JSX.Element => (
+            <MountAnimation>
+              <ResourceForm />
+            </MountAnimation>
+          )}
+        />
 
-        <Route path={routes.CREATE__CONFIRM}>
-          <MountAnimation>
-            <CreateGoalConfirm />
-          </MountAnimation>
-        </Route>
+        <ProtectedRoute
+          path={routes.CREATE__CONFIRM}
+          isValid={isGoalValid}
+          redirectPath={
+            isGoalInfoValid ? routes.CREATE__RESOURCES_LIST : routes.CREATE
+          }
+          component={(): JSX.Element => (
+            <MountAnimation>
+              <CreateGoalConfirm />
+            </MountAnimation>
+          )}
+        />
       </Switch>
     </Page>
   );

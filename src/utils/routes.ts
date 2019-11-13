@@ -7,4 +7,4 @@ export const routes = {
   CREATE__CONFIRM: '/create/confirm',
 
   DASHBOARD: '/dashboard'
-};
+} as const;
