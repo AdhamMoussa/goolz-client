@@ -1,15 +1,6 @@
 import * as yup from 'yup';
 
-export const goalCategories = [
-  'front end',
-  'back end',
-  'mobile development',
-  'artificial intelligence',
-  'blockchain',
-  'devops',
-  'databases',
-  'computer science'
-] as const;
+import { goalCategories } from '../../../store/goals/types';
 
 export const goalFormSchema = yup.object().shape({
   title: yup.string().required('Title is required'),

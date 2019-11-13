@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import { Schema } from 'yup';
 
 export const useCustomForm = <FormState>(
-  validationSchema: Schema<FormState>,
+  validationSchema: Schema<any>,
   defaultValues: FormState,
   updateFormState: (state: FormState) => void
 ) => {

@@ -1,11 +1,6 @@
 import * as yup from 'yup';
 
-export const resourceCategories = [
-  'online course/tutorial',
-  'book',
-  'article',
-  'side project'
-] as const;
+import { resourceCategories } from '../../../store/goals/types';
 
 export const resourceFormSchema = yup.object().shape({
   title: yup.string().required(),

@@ -1,5 +1,4 @@
 import React from 'react';
-import { InferType } from 'yup';
 
 import FormInput from '../../../components/FormInput';
 import FormSelect from '../../../components/FormSelect';
@@ -7,10 +6,10 @@ import FormDatePicker from '../../../components/FormDatePicker';
 import Button from '../../../components/Button';
 
 import { useCustomForm } from '../../../hooks/useCustomForm';
-
-import { goalCategories, goalFormSchema } from './goalForm.schema';
-
+import { goalCategories, IGoalInfo } from '../../../store/goals/types';
 import { icons } from '../../../utils/ui/icons';
+
+import { goalFormSchema } from './goalForm.schema';
 
 import styles from './styles.module.scss';
 import 'react-dropdown/style.css';
@@ -20,17 +19,16 @@ const goalCategoriesOptions = goalCategories.map(value => ({
   label: value
 }));
 
-export type IFormState = InferType<typeof goalFormSchema>;
-
 interface IProps {
-  initialFormState: IFormState;
-  updateFormState: (state: IFormState) => void;
+  initialFormState: IGoalInfo;
+  updateFormState: (state: IGoalInfo) => void;
+  next: () => void;
 }
 
 const GoalForm: React.FC<IProps> = props => {
-  const { initialFormState, updateFormState } = props;
+  const { initialFormState, updateFormState, next } = props;
 
-  const { formMethods, changeHandler } = useCustomForm<IFormState>(
+  const { formMethods, changeHandler } = useCustomForm<IGoalInfo>(
     goalFormSchema,
     initialFormState,
     updateFormState
@@ -38,8 +36,8 @@ const GoalForm: React.FC<IProps> = props => {
 
   const { errors, formState, handleSubmit } = formMethods;
 
-  const submitHandler = handleSubmit(data => {
-    console.log(data);
+  const submitHandler = handleSubmit(() => {
+    next();
   });
 
   return (
