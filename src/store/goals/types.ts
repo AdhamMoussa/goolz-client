@@ -1,3 +1,5 @@
+import { icons } from '../../utils/ui/icons';
+
 export const goalCategories = [
   'front end',
   'back end',
@@ -15,6 +17,13 @@ export const resourceCategories = [
   'article',
   'side project'
 ] as const;
+
+export const resourceCategoriesIcons = {
+  [resourceCategories[0]]: icons.computer,
+  [resourceCategories[1]]: icons.book,
+  [resourceCategories[2]]: icons.web,
+  [resourceCategories[3]]: icons.git
+};
 
 export interface IResource {
   title: string;

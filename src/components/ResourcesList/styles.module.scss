@@ -1,0 +1,81 @@
+@import '../../styles/styles.scss';
+
+.ResourcesList {
+  .resourceCard {
+    &:not(:last-child) {
+      margin-bottom: 25px;
+    }
+  }
+
+  .resourceHead {
+    margin-bottom: 15px;
+  }
+
+  .resourceTitle {
+    font-size: 22px;
+    font-weight: 400;
+    color: $gray;
+    margin-bottom: 10px;
+  }
+
+  .resourceCategory {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: $grayLight;
+    padding: 5px 10px;
+  }
+
+  .resourceCategoryIcon {
+    line-height: 1;
+    display: block;
+    margin-right: 10px;
+    transform: translateY(2px);
+  }
+
+  .resourceUrl {
+    color: $secondary;
+    text-decoration: underline;
+    margin-bottom: 35px;
+    font-size: 14px;
+  }
+
+  .resourceFooter {
+    display: flex;
+    align-items: center;
+  }
+
+  .resourceHours {
+    font-weight: 600;
+    margin-right: 15px;
+  }
+
+  .resourceSchedule {
+    display: flex;
+    align-items: center;
+  }
+
+  .weekDay {
+    padding: 5px 10px;
+    color: $gray;
+    font-weight: 300;
+    font-size: 14px;
+    text-transform: capitalize;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+
+    &.active {
+      color: $main;
+      background-color: $grayLight;
+      font-weight: 700;
+    }
+  }
+}
