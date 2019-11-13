@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import FormInput from '../../../components/FormInput';
 import FormSelect from '../../../components/FormSelect';
@@ -13,6 +14,7 @@ import { goalFormSchema } from './goalForm.schema';
 
 import styles from './styles.module.scss';
 import 'react-dropdown/style.css';
+import { routes } from '../../../utils/routes';
 
 const goalCategoriesOptions = goalCategories.map(value => ({
   value,
@@ -22,11 +24,12 @@ const goalCategoriesOptions = goalCategories.map(value => ({
 interface IProps {
   initialFormState: IGoalInfo;
   updateFormState: (state: IGoalInfo) => void;
-  next: () => void;
 }
 
 const GoalForm: React.FC<IProps> = props => {
-  const { initialFormState, updateFormState, next } = props;
+  const { initialFormState, updateFormState } = props;
+
+  const history = useHistory();
 
   const { formMethods, changeHandler } = useCustomForm<IGoalInfo>(
     goalFormSchema,
@@ -37,7 +40,7 @@ const GoalForm: React.FC<IProps> = props => {
   const { errors, formState, handleSubmit } = formMethods;
 
   const submitHandler = handleSubmit(() => {
-    next();
+    history.push(routes.CREATE__RESOURCES_LIST);
   });
 
   return (

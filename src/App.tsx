@@ -7,20 +7,22 @@ import Create from './pages/Create';
 
 import Layout from './components/Layout';
 
+import { routes } from './utils/routes';
+
 const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Layout>
         <Switch>
-          <Route path="/" exact>
+          <Route path={routes.FEED} exact>
             <Feed />
           </Route>
 
-          <Route path="/dashboard">
+          <Route path={routes.DASHBOARD}>
             <Dashboard />
           </Route>
 
-          <Route path="/create">
+          <Route path={routes.CREATE}>
             <Create />
           </Route>
         </Switch>
