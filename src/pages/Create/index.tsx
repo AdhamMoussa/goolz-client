@@ -21,20 +21,20 @@ const initialFormState: IGoal = {
   category: 'back end',
   startDate: new Date(),
   learningResources: [
-    // {
-    //   title: 'graphql bootcamp by Andrew Mead',
-    //   url: 'https://google.com',
-    //   category: 'online course/tutorial',
-    //   hoursPerDay: 3,
-    //   weeklySchedule: [0, 1, 3, 5]
-    // },
-    // {
-    //   title: 'graphql programming',
-    //   url: 'https://google.com',
-    //   category: 'book',
-    //   hoursPerDay: 1,
-    //   weeklySchedule: [2, 3, 4, 5]
-    // }
+    {
+      title: 'graphql bootcamp by Andrew Mead',
+      url: 'https://google.com',
+      category: 'online course/tutorial',
+      hoursPerDay: 3,
+      weeklySchedule: [0, 1, 3, 5]
+    },
+    {
+      title: 'graphql programming',
+      url: 'https://google.com',
+      category: 'book',
+      hoursPerDay: 1,
+      weeklySchedule: [2, 3, 4, 5]
+    }
   ]
 };
 
